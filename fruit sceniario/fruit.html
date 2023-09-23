@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Define the list of fruits and their prices
+const fruitPrices = {
+  apple: 2.0,
+  orange: 1.5,
+  banana: 1.0,
+  grape: 3.0,
+  mango: 2.5,
+};
+
+// Define the available budget
+const budget = 50.0;
+
+// Initialize variables
+let fruitList = ['apple', 'orange', 'banana', 'grape', 'mango'];
+let totalCost = 0.0;
+
+// Function to calculate the price of an individual fruit using switch case
+function getFruitPrice(fruit) {
+  switch (fruit) {
+    case 'apple':
+      return 2.0;
+    case 'orange':
+      return 1.5;
+    case 'banana':
+      return 1.0;
+    case 'grape':
+      return 3.0;
+    case 'mango':
+      return 2.5;
+    default:
+      return 0.0;
+  }
+}
+
+// Calculate the total cost with discounts
+for (let i = 0; i < fruitList.length; i++) {
+  const fruit = fruitList[i];
+  const price = getFruitPrice(fruit);
+
+  // Apply discounts for apples and bananas
+  if (fruit === 'apple') {
+    totalCost += 0.9 * price; // 10% discount for apples
+  } else if (fruit === 'banana') {
+    totalCost += 0.8 * price; // 20% discount for bananas
+  } else {
+    totalCost += price;
+  }
+}
+
+// Make the final decision
+if (totalCost <= budget) {
+  document.write('You can buy these fruits within your budget.');
+  document.write('Fruits to buy:', fruitList.join(', '));
+  document.write('Total cost: $' + totalCost.toFixed(2));
+} else {
+  document.write('You cannot buy the fruits within your budget.');
+}
+
+    </script>
+</body>
+</html>
